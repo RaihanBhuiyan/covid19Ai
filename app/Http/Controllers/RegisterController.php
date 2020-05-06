@@ -9,6 +9,10 @@ use Session;
 
 class RegisterController extends Controller
 {
+  public function registration()
+  {
+      return view('admin.login.registration');
+  }
   public function postRegistration(Request $request)
   {
       request()->validate([
@@ -31,8 +35,9 @@ class RegisterController extends Controller
         $data = $response->json();
         
         // echo '<pre>';
-        // print_r($data);
-        //  exit();
+        // print_r($data['response']);
+        // exit();
+
         if (array_key_exists("data",$data['response']))
         {
              $token_decode = json_decode(base64_decode(str_replace('_', '/', str_replace('-','+',explode('.', $data['response']['data'])[1]))));
@@ -82,17 +87,16 @@ class RegisterController extends Controller
               Session::flash('error','Your otp expired');
               return Redirect::to("registration");
          }
+         else if($data['response']['status'] == 'Invalid verification')
+         {
+              Session::flash('error','You have enter an Invalid otp');
+              //return Redirect::to("registration");
+              Redirect::back()->with('error', 'You have enter an Invalid otp');
+         }
          else
          {
            //return \Redirect::route('Otp', ['uuid'=>$request->uuid]);
             return redirect()->intended('Otp', ['uuid'=>$request->uuid]);
          }
-       // $data['response']['status'] = 'ok';--login
-
-        // [status] => OTP expired--singup
-        // OTP expired
-        // Input field required--otp page redirect with uuid
-
-      // return view('admin.login.otp');
   }
 }

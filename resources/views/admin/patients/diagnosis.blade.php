@@ -1,7 +1,15 @@
 @extends('admin.master')
-<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" />
+<!-- <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" /> -->
 @section('body')
-
+    <!-- loader -->
+    <div id="loader" class="modal">
+      <div class="modal-content ">
+        <img src="{{asset('admin/img/loader5.gif')}}" style="width: 171px;height: 124px;">
+        <p>Please wait a moment</p>
+        <p>Analyzing radiography in progress</p>
+      </div>
+    </div>
+    <!-- end loader -->
 
     <div class="page-header no-margin-bottom">
       <div class="container-fluid">
@@ -11,10 +19,11 @@
     <!-- Breadcrumb-->
     <div class="container-fluid">
       <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"></li>
 
       </ul>
     </div>
+
 
     <section class="no-padding-top">
         <div class="container-fluid">
@@ -25,15 +34,6 @@
 
         <form id="patientFrom" action="{{route('save_patient')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
           @csrf
-
-          <!-- <div class="form-group">
-            <label>Date</label>
-            <input type="text" name="date" id="tbDate" class="form-control">
-            @if ($errors->has('date'))
-            <span class="error">{{ $errors->first('date') }}</span>
-            @endif
-          </div> -->
-
             <input type="hidden" value="<?php echo date("d-m-Y");?>" name="date">
 
             <div class="form-group">
@@ -55,16 +55,9 @@
               <span class="error_form" id="age_error_message"></span>
             </div>
 
-            <!-- <div class="form-group">
-              <label>Sex</label>
-              <input type="text" name="sex" placeholder="type Male or Female" class="form-control">
-              @if ($errors->has('sex'))
-              <span class="error">{{ $errors->first('sex') }}</span>
-              @endif
-            </div> -->
             <div class="form-group">
               <label>Sex</label>
-              <select name="sex" class="form-control">
+              <select name="sex" id="sex" class="form-control">
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
               </select>
@@ -72,16 +65,6 @@
               <span class="error">{{ $errors->first('sex') }}</span>
               @endif
             </div>
-              <!-- <div class="form-group">
-                <div class="radio" style="padding: 0 0 0 0">
-                  <label for="radioCustom1">Sex    :  </label>
-                    <input id="radio" type="radio" value="0" name="sex" class="radio-template">    Male
-                    <input id="radio" type="radio" value="1" name="sex" class="radio-template">   Female
-                    @if ($errors->has('sex'))
-                    <span class="error">{{ $errors->first('sex') }}</span>
-                    @endif
-                </div>
-              </div> -->
 
             <div class="form-group">
               <label>Address</label>
@@ -90,15 +73,20 @@
             </div>
             <div class="form-group">
               <label style="color:white">Please upload X-ray or CT scan  radiography image.</label>
-              <input type="file" id="image" name="image" class="" onchange="return Checkfiles()">
+              <input type="file" id="image" name="image" accept=".png, .jpg, .jpeg"  >
 
                @if ($errors->has('image'))
                <span class="error">{{ $errors->first('image') }}</span>
                @endif
             </div>
             <span class="error_form" id="file_error_message"></span>
+
+
+              
+
+
             <div class="text-right">
-              <input type="submit" name="btn" class="btn btn-primary" value="Start Diagnosis" id="save" onclick="Loader()"/>
+              <input type="submit" name="btn"  class="btn btn-primary" value="Start Diagnosis" id="save"   disabled="disabled" />
             <div>
           </div>
 

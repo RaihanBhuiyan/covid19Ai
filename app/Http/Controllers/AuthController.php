@@ -12,10 +12,7 @@ use Session;
 
 class AuthController extends Controller
 {
-      public function registration()
-      {
-          return view('admin.login.registration');
-      }
+      
       public function postLogin(Request $request)
       {
 
@@ -34,19 +31,23 @@ class AuthController extends Controller
           ]);
           $data = $response->json();
           // echo '<pre>';
-          // print_r($data);
+          // print_r($data['response']['Organization']);
           // exit();
-          if(array_key_exists("data",$data['response'])){
-            $token_decode = json_decode(base64_decode(str_replace('_', '/', str_replace('-','+',explode('.', $data['response']['data'])[1]))));
-            $uuid = get_object_vars($token_decode);
-            $request->session()->push('uuid', $uuid['UUID']);
+          if(array_key_exists("data",$data['response']))
+          {
+                $token_decode = json_decode(base64_decode(str_replace('_', '/', str_replace('-','+',explode('.', $data['response']['data'])[1]))));
+                $uuid = get_object_vars($token_decode);
+                $request->session()->push('uuid', $uuid['UUID']);
+                $request->session()->push('Organization', $data['response']['Organization']);
           }
-          if($data['response']['status']=='ok'){
-              return redirect()->intended('/diagnosis');
+          if($data['response']['status']=='ok')
+          {
+              return redirect()->intended('diagnosis');
           }
-          if($data['response']['status']=='User account not active'){
-            Session::flash('alert','Your account is not active!!Please wait for active');
-            return Redirect::to("/")->withSuccess('Your account is not active!!Please wait for active');
+          if($data['response']['status']=='User account not active')
+          {
+                Session::flash('alert','Your account is not active!!Please wait for active');
+                return Redirect::to("/")->withSuccess('Your account is not active!!Please wait for active');
           }
 
 
@@ -54,31 +55,16 @@ class AuthController extends Controller
           return Redirect::to("/")->withSuccess('Oppes! You have entered invalid credentials');
       }
 
-      public function home(Request $request)
-      {
-        if($request->session()->has('uuid')){
-
-          $responseWorld = Http::get('https://coronavirus-19-api.herokuapp.com/all');
-          $worldData = $responseWorld->json();
-
-          $responseCountry = Http::get('https://coronavirus-19-api.herokuapp.com/countries');
-          $Countrydata = $responseCountry->json();
-
-          $BDdata = collect($Countrydata)->where('country','Bangladesh')->flatten()->all();
-          // echo '<pre>';
-          // print_r($BDdata);
-          // exit();
-          return view('admin.home.home',[
-            'Worldstatus'=>$worldData,
-            'countryStatus' =>$Countrydata,
-            'bdstatus'=>$BDdata
-          ]);
-
-          //return view('admin.home.home');
-        }
-        Session::flash('Error','Invelid');
-        return Redirect('/');
-      }
+      // public function diagnosis(Request $request)
+      // {
+      //   if($request->session()->has('uuid'))
+      //   {
+      //       return redirect()->intended('diagnosis');
+            
+      //   }
+      //   Session::flash('Error','Invelid');
+      //   return Redirect('/');
+      // }
 
       public function create(array $data)
       {

@@ -30,17 +30,17 @@
           <div class="col-md-12">
             <p class="font-weight-bold mb-4"><b>Result:</b></p>
             <p class="mb-1"><b>{{$keyData['Diagnosis_Result']}}</b></p>
-            <p  class="mb-1">Nb.This report is diagnosis by <b>AI Based COVID-19 Diagnosis System</b> with 90% accuracy.</p>
+            <p  class="mb-1">Nb. This report is diagnosis by <b>AI-based COVID-19 Diagnosis System</b> with 90% accuracy.</p>
 
           </div>
         </div>
 				<br /><br /><br /><br /><br /><br /><br /><br />
 				<hr style="padding: 1px 0;background: #585961; border: none;">
                 <div class="text-left">
-                    <div>Diagnosis By <b>AI Based COVID-19 Diagnosis System</b></div>
+                    <div>Diagnosis By <b>AI-based COVID-19 Diagnosis System</b></div>
                 </div>
                 <div style="float:right;margin: -20px 0;">
-                    <div>Isseud by Hospital name.</div>
+                    <div>Isseud by {{$Organization}}.</div>
                 </div>
             </main>
             </div>

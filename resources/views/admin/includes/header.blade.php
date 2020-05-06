@@ -3,9 +3,10 @@
 
         <div class="container-fluid d-flex align-items-center justify-content-between">
           <div class="navbar-header">
-            <!-- Navbar Header--><a href="{{route('diagnosis')}}" class="navbar-brand">
-              <div class="brand-text brand-big visible text-uppercase"><strong><img style="height: 30px;width: 160px;" src="{{asset('admin/img/logo5.png')}}" ></strong></div>
-              <div class="brand-text brand-sm"><strong class="text-danger"><img style="height: 30px;" src="{{asset('admin/img/logoadmin.png')}}" ></strong></div></a>
+              <a href="{{route('diagnosis')}}" class="navbar-brand">
+                <div class="brand-text brand-big visible text-uppercase"><strong><img style="height: 30px;width: 160px;" src="{{asset('admin/img/logo5.png')}}" ></strong></div>
+                <div class="brand-text brand-sm"><strong class="text-danger"><img style="height: 30px;" src="{{asset('admin/img/logoadmin.png')}}" ></strong></div>
+              </a>
             <!-- Sidebar Toggle Btn-->
             <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
           </div>

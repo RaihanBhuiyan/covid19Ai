@@ -18,12 +18,12 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/','HomeController@index');
-Route::get('/aboutUs','HomeController@AboutUs')->name('aboutUs');
+Route::get('/developers','HomeController@AboutDeveloper')->name('aboutDeveloper');
 Route::get('/info','HomeController@Information')->name('info');
 
 // Route::get('login', 'AuthController@index');
 Route::post('post-login', 'AuthController@postLogin');
-Route::get('registration', 'AuthController@registration');
+Route::get('registration', 'RegisterController@registration');
 Route::post('post-registration', 'RegisterController@postRegistration');
 Route::post('Otp', 'RegisterController@Otp');
 // Route::get('home', 'AuthController@home');

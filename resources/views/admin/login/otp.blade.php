@@ -8,9 +8,8 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<!--Bootsrap 4 CDN-->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="{{asset('admin/css/bootstrap.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{url('style.css')}}">
 
 </head>
@@ -32,7 +31,7 @@
                 <div class="form-label-group">
                   <input type="text" id="otp" name="otp" class="form-control" placeholder="otp" autofocus>
                   <label for="otp">Otp....</label>
-                  <span class="error_form" id="otp_error_message"></span>
+                  <span class="text-danger" id="otp_error_message"></span>
                   <input type="hidden" id="uuid" name="uuid" class="form-control" value="{{$uuid}}">
                   @if ($errors->has('otp'))
                   <span class="error">{{ $errors->first('otp') }}</span>
@@ -50,7 +49,7 @@
   </div>
 </div>
 
-<script src="{{asset('admin/vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('admin/js/jquery.min.js')}}"></script>
 <script>
   $(function() {
       $("#otp_error_message").hide();
@@ -65,7 +64,7 @@
           if(otp_length == 6) {
             $("#otp_error_message").hide();
           } else {
-              $("#otp_error_message").html("OTP hould be 6 characters");
+              $("#otp_error_message").html("OTP should be 6 characters");
               $("#otp_error_message").show();
               error_otp = true;
           }

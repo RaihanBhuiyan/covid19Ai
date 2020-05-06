@@ -4,14 +4,13 @@
 <!-- Page Header-->
     <div class="page-header no-margin-bottom">
       <div class="container-fluid">
-        <h2 class="h5 no-margin-bottom">Member List</h2>
+        <h2 class="h5 no-margin-bottom">Patient List</h2>
       </div>
     </div>
     <!-- Breadcrumb-->
     <div class="container-fluid">
       <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active">Patients            </li>
+        <li class="breadcrumb-item"></li>
       </ul>
     </div>
     <section class="no-padding-top">
@@ -45,18 +44,18 @@
                                         @php($i=1)
                                         @foreach($myData as $key=> $data)
                                             <tr>
-                                              <th scope="row">{{$i++}}</th>
-                                              <td class="text-center">{{$data['Date']}}</td>
-                                              <td class="text-center">{{$data['Patient_Name']}}</td>
+                                              <th scope="row" width="2%">{{$i++}}</th>
+                                              <td class="text-center" width="15%">{{$data['Date']}}</td>
+                                              <td class="text-center" width="10%">{{$data['Patient_Name']}}</td>
                                               <td class="text-center">{{$data['Contact_No']}}</td>
                                               <td class="text-center">{{$data['Age']}}</td>
                                               <td class="text-center">{{$data['Sex']}}</td>
                                               <td class="text-center">{{$data['Address']}}</td>
-                                              <td class="text-center">{{$data['Diagnosis_Result']}}</td>
+                                              <td class="text-center" width="20%">{{$data['Diagnosis_Result']}}</td>
 
                                               <td class="text-center">
                                                   <a href="{{route('patient_report',[$key])}}" class="btn btn-sm btn-dark">
-                                                    <span><i class="fa fa-eye"></i></span>
+                                                    <span><i class="fas fa-file-medical"></i></span>
                                                   </a>
                                               </td>
                                             </tr>

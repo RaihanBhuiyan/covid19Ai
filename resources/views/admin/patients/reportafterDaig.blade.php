@@ -10,15 +10,16 @@
         <div style="padding: 3px 45px;">
           <div class="text-right">
               <button id="printPrescription" class="btn btn-sm btn-danger"><i class="fa fa-print"></i> Print</button>
-
+              <br><br>
               <form action="/pdf_diag" method="get">
                 <input type="hidden" name="arr" value="{{$reportJson}}">
-                <button id="printPrescription" class="btn btn-sm btn-danger">
-                <i class="fa fa-file-pdf-o">
-                </i> Export as PDF</i>
+                <button  class="btn btn-sm btn-danger">
+                <i class="fa fa-file-pdf-o"></i> Export as PDF
                 </button>
               </form>
           </div>
+
+
           <div id="printArea">
 
             <header>
@@ -30,7 +31,9 @@
                 </div>
                 <br><br>
             </header>
+            <hr style="border: 1px solid #3989c6">
             <br><br>
+
             <div><h4 style="float: right;">Date : {{$report['Date']}}</h4></div>
             <main>
 
@@ -43,21 +46,24 @@
                         <div>Phone : {{$report['Contact No']}}</div>
                     </div>
                 </div>
-        <div class="row pb-5 p-5">
-          <div class="col-md-12">
-            <p class="font-weight-bold mb-4">Result:</p>
-            <p class="mb-1"><b>{{$report['Diagnosis Result']}}</b></p>
-            <p  class="mb-1">Nb.This report is diagnosis by <b>AI Based COVID-19 Diagnosis System</b> with 90% accuracy.</p>
 
-          </div>
-        </div>
+                <br /><br />
+                <div class="row pb-5 p-5">
+                    <div class="col-md-12">
+                    <p class="font-weight-bold mb-4">Result:</p>
+                    <p class="mb-1"><b>{{$report['Diagnosis Result']}}</b></p>
+                    <p  class="mb-1">Nb. This report is diagnosis by <b>AI-based COVID-19 Diagnosis System</b> with 90% accuracy .</p>
+
+                    </div>
+                </div>
+
                 <br /><br /><br /><br /><br /><br /><br /><br />
-                <hr style="padding: 1px 0;background: #585961; border: none;">
+                <hr style="border: 1px solid #3989c6">
                 <div class="text-left">
-                    <div>Diagnosis By <b>AI Based COVID-19 Diagnosis System</b></div>
+                    <div>Diagnosis By <b>AI-based COVID-19 Diagnosis System</b></div>
                 </div>
                 <div style="float:right;margin: -25px 0;">
-                    <div>Isseud by Hospital name.</div>
+                    <div>Isseud by {{$Organization}}.</div>
                 </div>
             </main>
             </div>

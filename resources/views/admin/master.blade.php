@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AI Based COVID-19 Diagnosis System</title>
+    <title>AI-based COVID-19 Diagnosis System</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -16,12 +16,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700">
     <link rel="stylesheet" href="{{asset('admin/css/style.default.css')}}" id="theme-stylesheet">
     <link rel="stylesheet" href="{{asset('admin/css/custom.css')}}">
-    <link rel="shortcut icon" href="{{asset('admin/img/favicon.ico')}}">
+    
+    <link rel="shortcut icon" href="{{asset('admin/img/favicon1.ico')}}">
 
     <link href="{{asset('admin/prescription/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('admin/css/jquery-confirm.min.css')}}">
 
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
     <style>
     .my-custom-scrollbar {
@@ -33,11 +35,38 @@
         display: block;
         }
       .error_form{color:#b34403}
+
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 180px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+
+      /* Modal Content */
+      .modal-content {
+        background-color: #292929;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #292929;
+        width: 34%;
+        align-items: center;
+      }
+      .modal-content p{color:#e8dddd}
+      
     </style>
 
   </head>
   <body>
 <div>
+
     @include('admin.includes.header')
     <div class="d-flex align-items-stretch">
         <!-- Sidebar Navigation-->
@@ -52,6 +81,7 @@
         </div>
     </div>
 </div>
+
 
 
 
@@ -110,8 +140,6 @@
               {
                 $("#name_error_message").hide();
               }
-
-
           }
 
           function check_contact() {
@@ -146,8 +174,8 @@
 
           function check_address() {
               var address_length = $("#address").val().length;
-              if(address_length < 5 || address_length > 80) {
-                $("#address_error_message").html("Should be between 5-20 characters");
+              if(address_length < 5 || address_length > 50) {
+                $("#address_error_message").html("Should be between 5-50 characters");
                 $("#address_error_message").show();
                 error_address = true;
               } else {
@@ -158,19 +186,21 @@
                 var fup = document.getElementById('image');
                 var fileName = fup.value;
                 var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+
                 if(ext == "JPEG" || ext == "jpeg" || ext == "jpg" || ext == "JPG")
                 {
                   $("#file_error_message").hide();
                   return true;
+
                 }
                 else{
                   $("#file_error_message").html("Please upload png,jpeg,jpg file");
                   $("#file_error_message").show();
                   fup.value = '';
                   error_file = true;
+
                 }
             }
-
 
           $("#patientFrom").submit(function() {
             error_name = false;
@@ -186,9 +216,12 @@
             check_image();
             
 
-            if(error_name == false && error_contact == false && error_age == false && error_address == false && error_file == false){
-                return true;
-            } else {
+            if(error_name == false && error_contact == false && error_age == false && error_address == false && error_file == false)
+            {
+                return true; 
+            } 
+            else 
+            {
                 return false;
             }
 
@@ -196,7 +229,42 @@
 
           })
       });
+
       //end form validation
+
+    </script>
+
+    <script>
+      $(function() {
+
+          var pattern = new RegExp(/([1-9][0-9]*)|0/);
+
+                var fup = document.getElementById('image');
+                var fileName = $("#image").val();
+                var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+
+
+          patientFrom.addEventListener('input',()=>
+          {
+            if(
+                $("#name").val().length > 5 && $("#name").val().length < 20
+              && pattern.test($("#contact").val()) && $("#contact").val().length == 11
+              &&  $("#age").val().length > 1 
+              &&  $("#age").val().length <3 
+              &&  $("#age").val() != 0
+              &&  $("#address").val().length > 4 &&  $("#address").val().length < 50
+              && fup.value != ''
+
+              )
+            {
+              $('#save').removeAttr('disabled');
+            }
+            else
+            {
+              $('#save').attr('disabled','disabled');
+            }
+          })
+      });
     </script>
 
     <script>
@@ -234,18 +302,14 @@
         $('#example').DataTable();
       } );
 
+    </script>
 
-    //Loader
-    function Loader(){
-        $.confirm({
-          icon: 'fa fa-spinner fa-spin',
-          title: 'Working!',
-          type: 'red',
-          content: 'Your daignosis starting'
-
-        });
-    }
-
+    <script>
+        var loader = document.getElementById("loader");
+        var btn = document.getElementById("save");
+        btn.onclick = function() {
+          loader.style.display = "block";
+        }
     </script>
   </body>
 </html>

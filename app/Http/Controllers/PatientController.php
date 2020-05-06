@@ -41,7 +41,14 @@ class PatientController extends Controller
 
     public function Diagnosis()
     {
-       return view('admin.patients.diagnosis');
+        $uuid=Session::get('uuid');
+        $uuid = $uuid[0];
+        if($uuid)
+        {
+            return view('admin.patients.diagnosis'); 
+        }
+        Session::flash('Error','Invelid');
+        return Redirect("/");
     }
 
     protected function validatePatient($request){
@@ -71,6 +78,9 @@ class PatientController extends Controller
 
               $uuid=Session::get('uuid');
               $uuid = $uuid[0];
+
+              $Organization = Session::get('Organization');
+              $Org = $Organization[0];
 
               $client = new Client();
               $response = $client->request('POST', 'http://52.77.185.229:5000/api/covid19_detection', [
@@ -118,8 +128,12 @@ class PatientController extends Controller
               $token_decode = json_decode(base64_decode(str_replace('_', '/', str_replace('-','+',explode('.', $data['response']['data'])[1]))));
               $dataDecoded = get_object_vars($token_decode);
 
+              // echo '<pre>';
+              // print_r($data);
+              // exit();
+
               if($data['response']['status']='ok'){
-                 return view('admin.patients.reportafterDaig',['report'=>$dataDecoded]);
+                 return view('admin.patients.reportafterDaig',['report'=>$dataDecoded,'Organization'=>$Org]);
               }
         }
     }
@@ -131,6 +145,9 @@ class PatientController extends Controller
     {
         $uuid=Session::get('uuid');
         $uuid = $uuid[0];
+
+        $Organization = Session::get('Organization');
+        $Org = $Organization[0];
 
         $response =Http::withHeaders([
              'x-api-key' => 'covid192020',
@@ -145,7 +162,7 @@ class PatientController extends Controller
        // exit();
 
        if (array_key_exists("data",$data['response'])){
-         return view('admin.patients.reportprescript',['keyData'=>$data['response']['data'][$key],'key'=>$key]);
+         return view('admin.patients.reportprescript',['keyData'=>$data['response']['data'][$key],'key'=>$key,'Organization'=>$Org]);
         }
 
     }
@@ -153,6 +170,9 @@ class PatientController extends Controller
     {
           $uuid=Session::get('uuid');
           $uuid = $uuid[0];
+
+          $Organization = Session::get('Organization');
+          $Org = $Organization[0];
 
           $response =Http::withHeaders([
                'x-api-key' => 'covid192020',
@@ -162,9 +182,8 @@ class PatientController extends Controller
 
            $data = $response->json();
 
-
            if (array_key_exists("data",$data['response'])){
-             $pdf = PDF::loadView('admin.patients.reportPdf',['keyData'=>$data['response']['data'][$key]]);
+             $pdf = PDF::loadView('admin.patients.reportPdf',['keyData'=>$data['response']['data'][$key],'Organization'=>$Org]);
 
              $pdfDownload = $pdf->stream($data['response']['data'][$key]['Contact_No'].'.pdf');
 
@@ -172,14 +191,16 @@ class PatientController extends Controller
             }
     }
 
-
     public function pdf_diag(Request $request)
     {
       $array=json_decode($request->arr);
       $array= json_decode(json_encode($array), true);
       $array=$array[0];
 
-      $pdf = PDF::loadView('admin.patients.singlePdf',['keyData'=>$array]);
+      $Organization = Session::get('Organization');
+      $Org = $Organization[0];
+
+      $pdf = PDF::loadView('admin.patients.singlePdf',['keyData'=>$array,'Organization'=>$Org]);
       $pdfDownload = $pdf->stream($array['Contact No'].'.pdf');
       return $pdfDownload;
     }

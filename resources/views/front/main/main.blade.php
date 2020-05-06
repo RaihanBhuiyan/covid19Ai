@@ -4,12 +4,13 @@
 
 <section class="pricing-area pt-100 pb-100" id="pricing">
 		<div class="container">
+			<br>
 			<div class="row">
-				<div class="col-xl-8 mx-auto text-center">
-					<div class="section-title">
-						<h2>Bangladesh coronavirus status</h2>
-					</div>
-				</div>
+				<br><br><br>
+				<span style="margin: 0 15px;">
+					<img class="XnmoPc" aria-hidden="true"><img id="dimg_3" src="{{asset('front/img/bd-flag.png')}}" class="rISBZc" style=" height: 50px;width: 50px" />
+				</span>
+				<span style="margin: 12px 0;"><span>Bangladesh</span></span>
 			</div>
 			<div class="row">
 			    
@@ -29,6 +30,23 @@
 
 			   </div>
 			   </div>
+
+			   <div class="col-xl-4">
+					<div class="single-price">
+					  <div class="price-title">
+						<h4>Recovered</h4>
+					  </div>
+					  
+					  <div class="text-success price-title">
+						<h4><i class="icon-sli-user-following icon3x text-success"></i></h4>
+					  </div>
+					  
+					  <div class=" center">
+						<h2>{{$bdstatus[5]}}</h2>
+					  </div>
+
+				   </div>
+			   </div>
 			   
                <div class="col-xl-4">
 				<div class="single-price">
@@ -45,24 +63,7 @@
 				  </div>
 
 			   </div>
-			   </div>
-			   
-               <div class="col-xl-4">
-				<div class="single-price">
-				  <div class="price-title">
-					<h4>Recovered</h4>
-				  </div>
-				  
-				  <div class="text-success price-title">
-					<h4><i class="icon-sli-user-following icon3x text-success"></i></h4>
-				  </div>
-				  
-				  <div class=" center">
-					<h2>{{$bdstatus[5]}}</h2>
-				  </div>
-
-			   </div>
-			   </div>
+			   </div> 
 			   
 			   
             </div>
@@ -76,15 +77,17 @@
 
 	<section class="pricing-area pt-100 pb-100" id="pricing">
 		<div class="container">
+			<br>
 			<div class="row">
-				<div class="col-xl-8 mx-auto text-center">
-					<div class="section-title">
-						<h2>World's coronavirus status</h2>
-					</div>
-				</div>
+				<br><br><br>
+				<span style="margin: 0 15px;">
+					<img class="XnmoPc" aria-hidden="true"><img id="dimg_3" src="{{asset('front/img/world.png')}}" class="rISBZc" style=" height: 50px;width: 50px" />
+				</span>
+				<span style="margin: 12px 0;"><span>Worldwide</span></span>
+				
 			</div>
-			<div class="row">
-			    
+
+			<div class="row"> 
                <div class="col-xl-4">
 				<div class="single-price">
 				  <div class="price-title">
@@ -97,6 +100,23 @@
 				  
 				  <div class=" center">
 					<h2>{{$Worldstatus['cases']}}</h2>
+				  </div>
+
+			   </div>
+			   </div>
+
+			  <div class="col-xl-4">
+				<div class="single-price">
+				  <div class="price-title">
+					<h4>Recovered</h4>
+				  </div>
+				  
+				  <div class="text-success price-title">
+					<h4><i class="icon-sli-user-following icon3x text-success"></i></h4>
+				  </div>
+				  
+				  <div class=" center">
+					<h2>{{$Worldstatus['recovered']}}</h2>
 				  </div>
 
 			   </div>
@@ -118,24 +138,6 @@
 
 			   </div>
 			   </div>
-			   
-               <div class="col-xl-4">
-				<div class="single-price">
-				  <div class="price-title">
-					<h4>Recovered</h4>
-				  </div>
-				  
-				  <div class="text-success price-title">
-					<h4><i class="icon-sli-user-following icon3x text-success"></i></h4>
-				  </div>
-				  
-				  <div class=" center">
-					<h2>{{$Worldstatus['recovered']}}</h2>
-				  </div>
-
-			   </div>
-			   </div>
-			   
 			   
             </div>
 		</div>

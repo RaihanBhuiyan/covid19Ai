@@ -25,9 +25,9 @@ class HomeController extends Controller
           'bdstatus'=>$BDdata
         ]);
     }
-    public function AboutUs()
+    public function AboutDeveloper()
     {
-        return view('front.main.aboutUs');
+        return view('front.main.aboutDeveloper');
     }
     public function Information()
     {

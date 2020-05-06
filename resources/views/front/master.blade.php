@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Based COVID-19 Diagnosis System</title>
-    <link rel="shortcut icon" href="{{asset('admin/img/favicon.ico')}}">
+    <title>AI-based COVID-19 Diagnosis System</title>
+    <link rel="shortcut icon" href="{{asset('admin/img/favicon1.ico')}}">
     <!-- <link rel="stylesheet" href="{{asset('front/css/components.css')}}"> -->
     <link rel="stylesheet" href="{{asset('admin/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/icons.css')}}">
@@ -39,7 +39,7 @@
           font-weight: 500;
           color: #777;
         }
-        .section-title h2 {
+        .section-title h3 {
           font-size: 32px;
           text-transform: capitalize;
           margin: 15px 0;
@@ -54,10 +54,10 @@
           font-weight: 300;
           font-size: 14px;
         }
-        .black-bg .section-title h2, .black-bg .section-title h4, .black-bg .section-title p {
+        .black-bg .section-title h3, .black-bg .section-title h4, .black-bg .section-title p {
           color:#fff
         }
-        .section-title h2:before {
+        .section-title h3:before {
           position: absolute;
           content: "";
           width: 150px;
@@ -67,7 +67,7 @@
           left: 50%;
           margin-left: -75px;
         }
-        .section-title h2:after {
+        .section-title h3:after {
           position: absolute;
           content: "";
           width: 80px;
@@ -107,9 +107,9 @@
 
           <ul class="right chevron">
             <li><a href="{{url('/')}}">Home</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#loginModal">Covid-19 Diagnosis</a></li>
-            <li><a href="{{route('aboutUs')}}">About Developer</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#loginModal">COVID-19 Diagnosis</a></li>
             <li><a href="{{route('info')}}">Information</a></li>
+            <li><a href="{{route('aboutDeveloper')}}">About Developer</a></li>
           </ul>
         </div>
       </nav>
@@ -169,7 +169,7 @@
         <!-- Bottom Footer -->
       <section class="padding background-dark full-width">
         <div class="s-12 l-12 text-center">
-          <p class="text-size-12">Copyright 2020, AI Based COVID-19 Diagnosis System.</p>
+          <p class="text-size-12">Copyright 2020, AI-based COVID-19 Diagnosis System.</p>
         </div>
       </section>
     </footer>

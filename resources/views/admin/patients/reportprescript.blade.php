@@ -13,11 +13,11 @@
                 <div class="row">
                     <div class="col">
                             <h1 style="text-align: center;color: #bb414d;">COVID-19 Diagnosis Lab Report</h1>
-
                     </div>
                 </div>
                 <br><br>
             </header>
+            <hr style="border: 1px solid #3989c6">
             <br><br>
             <div><h4 style="float: right;">Date : {{$keyData['Date']}}</h4></div>
             <main>
@@ -32,21 +32,23 @@
                     </div>
 
                 </div>
+                <br><br>
         <div class="row pb-5 p-5">
           <div class="col-md-12">
             <p class="font-weight-bold mb-4">Result : </p>
             <p class="mb-1"><b>{{$keyData['Diagnosis_Result']}}</b></p>
-            <p  class="mb-1">Nb. This report is diagnosis by <b>AI Based COVID-19 Diagnosis System</b> with 90% accuracy .</p>
+            <p  class="mb-1">Nb. This report is diagnosis by <b>AI-based COVID-19 Diagnosis System</b> with 90% accuracy .</p>
 
           </div>
         </div>
                 <br /><br /><br /><br /><br /><br /><br /><br />
-                <hr style="padding: 1px 0;background: #585961; border: none;">
+                <hr style="border: 1px solid #3989c6">
                 <div class="text-left">
-                    <div>Diagnosis By <b>AI Based COVID-19 Diagnosis System</b></div>
+                    <div>Diagnosis By <b>AI-based COVID-19 Diagnosis System</b></div>
                 </div>
                 <div style="float:right;margin: -25px 0;">
-                    <div>Isseud by Hospital name.</div>
+                    <div>Isseud by {{$Organization}}.</div>
+
                 </div>
 
             </main>
