@@ -6,9 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Validator,Redirect,Response;
 use Session;
+Use App\UrlApi;
 
 class RegisterController extends Controller
 {
+  public function apiurl()
+  {
+      $check = new UrlApi;
+      $ipAddress = $check ->ip_finder();
+      return $ipAddress;
+  }
   public function registration()
   {
       return view('admin.login.registration');
@@ -25,7 +32,7 @@ class RegisterController extends Controller
       $response=Http::withHeaders([
             'x-api-key' => 'covid192020',
         ])
-        ->post('http://52.77.185.229:5000/api/user/registration', [
+        ->post('http://'.$this->apiurl().'/api/user/registration', [
             'ORGName' => $request->ORGName,
             'ContactNo' => $request->ContactNo,
             'Address' => $request->address,
@@ -66,7 +73,7 @@ class RegisterController extends Controller
       $response=Http::withHeaders([
             'x-api-key' => 'covid192020',
         ])
-        ->post('http://52.77.185.229:5000/api/user/otp', [
+        ->post('http://'.$this->apiurl().'/api/user/otp', [
             'UUID' => $request->uuid,
             'OTP' => $request->otp
         ]);
@@ -91,7 +98,8 @@ class RegisterController extends Controller
          {
               Session::flash('error','You have enter an Invalid otp');
               //return Redirect::to("registration");
-              Redirect::back()->with('error', 'You have enter an Invalid otp');
+              //Redirect::back()->with('error', 'You have enter an Invalid otp');
+              return redirect('/Otp')->with('error','You have enter an Invalid otp');
          }
          else
          {

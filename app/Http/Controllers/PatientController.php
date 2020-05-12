@@ -7,20 +7,28 @@ use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Storage;
 Use App\Patient;
+Use App\UrlApi;
 use Session;
 use PDF;
 
 class PatientController extends Controller
 {
+    public function apiurl()
+    {
+        $check = new UrlApi;
+        $ipAddress = $check ->ip_finder();
+        return $ipAddress;
+    }
     public function index(Request $request)
     {
+        
 
         $uuid=Session::get('uuid');
         $uuid = $uuid[0];
 
         $response =Http::withHeaders([
              'x-api-key' => 'covid192020',
-         ])->post('http://52.77.185.229:5000/api/patient_list',[
+         ])->post('http://'.$this->apiurl().'/api/patient_list',[
            'UUID' => $uuid,
          ]);
 
@@ -83,7 +91,7 @@ class PatientController extends Controller
               $Org = $Organization[0];
 
               $client = new Client();
-              $response = $client->request('POST', 'http://52.77.185.229:5000/api/covid19_detection', [
+              $response = $client->request('POST', 'http://'.$this->apiurl().'/api/covid19_detection', [
                   'headers' => [
                       'x-api-key' => 'covid192020'
                   ],
@@ -151,7 +159,7 @@ class PatientController extends Controller
 
         $response =Http::withHeaders([
              'x-api-key' => 'covid192020',
-         ])->post('http://52.77.185.229:5000/api/patient_list',[
+         ])->post('http://'.$this->apiurl().'/api/patient_list',[
            'UUID' => $uuid,
          ]);
 
@@ -176,7 +184,7 @@ class PatientController extends Controller
 
           $response =Http::withHeaders([
                'x-api-key' => 'covid192020',
-           ])->post('http://52.77.185.229:5000/api/patient_list',[
+           ])->post('http://'.$this->apiurl().'/api/patient_list',[
              'UUID' => $uuid,
            ]);
 

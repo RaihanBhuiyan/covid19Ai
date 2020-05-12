@@ -24,8 +24,9 @@ Route::get('/info','HomeController@Information')->name('info');
 // Route::get('login', 'AuthController@index');
 Route::post('post-login', 'AuthController@postLogin');
 Route::get('registration', 'RegisterController@registration');
-Route::post('post-registration', 'RegisterController@postRegistration');
-Route::post('Otp', 'RegisterController@Otp');
+Route::post('post-registration', 'RegisterController@postRegistration')->name('post-registration');
+
+Route::post('Otp', 'RegisterController@Otp')->name('Otp');
 // Route::get('home', 'AuthController@home');
 
 Route::get('logout', 'AuthController@logout');

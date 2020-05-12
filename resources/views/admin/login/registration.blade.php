@@ -42,7 +42,7 @@
                   <div class="logo">
                     <h1>Registration</h1>
                   </div>
-                  <p><b>AI Based COVID-19 Diagnosis System</b>.</p>
+                  <p><b>AI-based COVID-19 Diagnosis System</b>.</p>
                 </div>
               </div>
             </div>

@@ -6,15 +6,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Validator,Redirect,Response;
 Use App\User;
+Use App\UrlApi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Session;
 
 class AuthController extends Controller
 {
-      
+      public function apiurl()
+      {
+          $check = new UrlApi;
+          $ipAddress = $check ->ip_finder();
+          return $ipAddress;
+      }
       public function postLogin(Request $request)
       {
+          
 
           request()->validate([
           'email' => 'required',
@@ -25,7 +32,7 @@ class AuthController extends Controller
           $response=Http::withHeaders([
             'x-api-key' => 'covid192020',
           ])
-          ->post('http://52.77.185.229:5000/api/user/login', [
+          ->post('http://'.$this->apiurl().'/api/user/login', [
               'Email' => $request->email,
               'Password' => $request->password,
           ]);

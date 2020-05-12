@@ -101,7 +101,7 @@
         $("#contact_error_message").hide();
         $("#age_error_message").hide();
         $("#address_error_message").hide();
-        $("#file_error_message").hide();
+
 
         var error_name = false;
         var error_contact = false;
@@ -182,41 +182,23 @@
               $("#address_error_message").hide();
               }
           }
-          function check_image() {
-                var fup = document.getElementById('image');
-                var fileName = fup.value;
-                var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
 
-                if(ext == "JPEG" || ext == "jpeg" || ext == "jpg" || ext == "JPG")
-                {
-                  $("#file_error_message").hide();
-                  return true;
-
-                }
-                else{
-                  $("#file_error_message").html("Please upload png,jpeg,jpg file");
-                  $("#file_error_message").show();
-                  fup.value = '';
-                  error_file = true;
-
-                }
-            }
 
           $("#patientFrom").submit(function() {
             error_name = false;
             error_contact = false;
             error_age = false;
             error_address = false;
-            error_file = false;
+ 
 
             check_name();
             check_contact();
             check_age();
             check_address();
-            check_image();
+
             
 
-            if(error_name == false && error_contact == false && error_age == false && error_address == false && error_file == false)
+            if(error_name == false && error_contact == false && error_age == false && error_address == false )
             {
                 return true; 
             } 
