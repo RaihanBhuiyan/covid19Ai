@@ -36,6 +36,9 @@ class AuthController extends Controller
               'Email' => $request->email,
               'Password' => $request->password,
           ]);
+
+
+
           $data = $response->json();
           // echo '<pre>';
           // print_r($data['response']['Organization']);
@@ -47,7 +50,7 @@ class AuthController extends Controller
                 $request->session()->push('uuid', $uuid['UUID']);
                 $request->session()->push('Organization', $data['response']['Organization']);
           }
-          if($data['response']['status']=='ok')
+          if($response->successful())
           {
               return redirect()->intended('diagnosis');
           }

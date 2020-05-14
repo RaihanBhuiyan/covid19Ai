@@ -39,6 +39,9 @@ class RegisterController extends Controller
             'Email' => $request->email,
             'Password' => $request->password,
         ]);
+
+
+
         $data = $response->json();
         
         // echo '<pre>';
@@ -55,15 +58,13 @@ class RegisterController extends Controller
              return view('admin.login.otp',['uuid'=>$uuid['UUID']]);
              //return redirect()->intended('otp',['uuid'=>$uuid['UUID']]);
          }
-         if($data['response']['status']=='User already registered')
+         if($response->clientError())
          {
             Session::flash('error','User already registered');
             return Redirect::to("registration");
          }
-         Session::flash('Error','Invalid Information');
-         return Redirect::to("registration");
-      //
-      // return Redirect::to("dashboard")->withSuccess('Great! You have Successfully loggedin');
+         // Session::flash('Error','Invalid Information');
+         // return Redirect::to("registration");
   }
   public function Otp(Request $request)
   {
@@ -78,33 +79,34 @@ class RegisterController extends Controller
             'OTP' => $request->otp
         ]);
 
-
+          // $ResStatus = $response->status();
+          // echo '<pre>';
+          // print_r($ResStatus);
+          // exit();
 
         $data = $response->json();
          // echo '<pre>';
          // print_r($data);
          // exit();
-         if($data['response']['status'] == 'ok')
+         if($response->successful())
          {
               Session::flash('success','Please wait till your host active your account.');
               return Redirect::to('/');
          }
-         else if($data['response']['status'] == 'OTP expired')
+         else if($response->status()==403)
          {
               Session::flash('error','Your otp expired');
-              return Redirect::to("registration");
+              return Redirect::to('/');
          }
-         else if($data['response']['status'] == 'Invalid verification')
+         else if($response->status()==400)
          {
               Session::flash('error','You have enter an Invalid otp');
-              //return Redirect::to("registration");
-              //Redirect::back()->with('error', 'You have enter an Invalid otp');
-              return redirect('/Otp')->with('error','You have enter an Invalid otp');
+
          }
-         else
-         {
-           //return \Redirect::route('Otp', ['uuid'=>$request->uuid]);
-            return redirect()->intended('Otp', ['uuid'=>$request->uuid]);
-         }
+         // else
+         // {
+         //   //return \Redirect::route('Otp', ['uuid'=>$request->uuid]);
+         //    return redirect()->intended('Otp', ['uuid'=>$request->uuid]);
+         // }
   }
 }

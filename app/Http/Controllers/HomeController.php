@@ -15,61 +15,36 @@ class HomeController extends Controller
       $responseWorld = Http::get('https://coronavirus-19-api.herokuapp.com/all');
       $worldData = $responseWorld->json();
 
-      // $responseCountry = Http::get('https://coronavirus-19-api.herokuapp.com/countries');
-      // $Countrydata = $responseCountry->json();
-      // $BDdata = collect($Countrydata)->where('country','Bangladesh')->flatten()->all();
+      $country_status = Http::get('https://corona.lmao.ninja/v2/countries?yesterday&sort');
+      $all_contry_status = $country_status->json();
 
+      $bd_total_Status= collect($all_contry_status)->where('country','Bangladesh')->flatten()->all();
 
-      $bdSt = Http::get('https://corona.lmao.ninja/v2/countries?yesterday&sort');
-      $bdStatistics = $bdSt->json();
-      $bdSts= collect($bdStatistics)->where('country','Bangladesh')->flatten()->all();
+      // echo '<pre>';
+      // print_r($bd_total_Status);
+      // exit();
 
+        $BdDailyStatistics = Http::get('https://api.thevirustracker.com/free-api?countryTimeline=BD');
+        $DailyBdStatistics = $BdDailyStatistics->json();
 
-        $BdDaily = Http::get('https://api.thevirustracker.com/free-api?countryTimeline=BD');
-        $DaiilyBdSts = $BdDaily->json();
+        $statistic_case_dailyBD = collect($DailyBdStatistics['timelineitems'][0])->pluck('new_daily_cases')->toArray();
+        $statistic_death_dailyBD = collect($DailyBdStatistics['timelineitems'][0])->pluck('new_daily_deaths')->toArray();
 
-
-
-        // echo '<pre>';
-        // print_r($DaiilyBdSts['timelineitems'][0]);
-        // exit();
-
-        // $period = CarbonPeriod::create('2020-03-08', '2020-05-10');
-        // $dates=[];
-        // //$dataArr = $DaiilyBdSts['timelineitems'][0];
-
-        // foreach ($period as $date) 
-        // {
-        //     $dates[]= $date->format('m/d/y');
-        // }
-        // $dates = $period->toArray();
-        // echo '<pre>';
-        // print_r($dates);
-        // exit();
-
-        // $period = CarbonPeriod::create('2020-03-08', date("Y-m-d"));
-        // // Iterate over the period
-        // //$dataArr = $DaiilyBdSts['timelineitems'][0];
-        // $dates=[];
-        // foreach ($period as $date) {
-        //      $dates[]= $date->format('m/d/y');
-
-             
-        // }
-        // echo '<pre>';
-        // print_r($dates);
-        // exit();
-
-        // Convert the period to an array of dates
-        // $dates = $period->toArray();
+        $period = CarbonPeriod::create('2020-03-08', date("Y-m-d"));
+        $dates=[];
+        foreach ($period as $date) 
+        {
+             $dates[]= $date->format('d M');
+        }
 
         
-
         return view('front.main.main',[
           'Worldstatus'=>$worldData,
-          'countryStatus' =>$bdStatistics,
-          'bdstatus'=>$bdSts,
-          'dailyBDstatus' => $DaiilyBdSts
+          'countryStatus' =>$all_contry_status,
+          'bdstatus'=>$bd_total_Status,
+          'dailyBdCases' => $statistic_case_dailyBD,
+          'dailyBdDeath' => $statistic_death_dailyBD,
+          'statisticsDate' => $dates
         ]);
     }
     public function AboutDeveloper()

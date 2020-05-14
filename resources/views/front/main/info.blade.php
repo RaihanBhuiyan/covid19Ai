@@ -4,7 +4,7 @@
 	<main role="main">
       <!-- Content -->
       <article>
-        <header class="section" style="background: #152732">
+        <header class="section" style="background: #111923">
           <div class="line">        
             <h1 class="margin-top-bottom-40 text-size-60 text-line-height-1" style="color: white">Information</h1>
             <p class="margin-bottom-0 text-size-16">For further information you can email or call us.</p>

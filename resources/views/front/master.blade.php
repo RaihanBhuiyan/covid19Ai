@@ -183,7 +183,7 @@
     <script type="text/javascript" src="{{asset('front/js/template-scripts.js')}}"></script>
 
     <script type="text/javascript" src="{{asset('admin/js/notify.min.js')}}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 
     <script type="text/javascript">
       $(document).ready(function(){
@@ -204,28 +204,7 @@
       document.getElementById("dateTime").innerHTML = today.toLocaleDateString("en-US", options);
     </script>
 
-    <script type="text/javascript">
 
-      var ctx = document.getElementById('myChart').getContext('2d');
-      var chart = new Chart(ctx, {
-          // The type of chart we want to create
-          type: 'line',
-
-          // The data for our dataset
-          data: {
-              labels: ['03/08/20', '03/08/20', '03/08/20', '03/08/20', '03/08/20', '03/08/20', '03/08/20','03/08/20','03/08/20', '03/08/20', '03/08/20', '03/08/20', '03/08/20', '03/08/20', '03/08/20','03/08/20', '03/08/20', '03/08/20', '03/08/20', '03/08/20', '03/08/20', '03/08/20', '03/08/20','03/08/20','03/08/20', '03/08/20', '03/08/20', '03/08/20', '03/08/20', '03/08/20', '03/08/20','03/08/20'],
-              datasets: [{
-                  label: 'Daily Total Cases',
-                  backgroundColor: 'rgb(255, 99, 132)',
-                  borderColor: 'rgb(255, 99, 132)',
-                  data: [500, 455, 800, 800, 700, 730, 645, 774, 900, 800, 775, 662, 820, 800,760, 554, 500, 455, 800, 800, 700, 730, 645, 774, 900, 800, 775, 662, 820, 800,760, 554]
-              }]
-          },
-
-          // Configuration options go here
-          options: {}
-      });
-    </script>
 
   </body>
 </html>
