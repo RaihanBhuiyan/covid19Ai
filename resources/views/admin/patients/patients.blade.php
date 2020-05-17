@@ -37,7 +37,7 @@
                                             <th class="text-center">Sex</th>
                                             <th class="text-center">Address</th>
                                             <th class="text-center">Report</th>
-                                            <th class="text-center">Action</th>
+                                            <th class="text-center">View</th>
                                           </tr>
                                       </thead>
                                       <tbody>
@@ -48,7 +48,7 @@
                                               <td class="text-center" width="15%">{{$data['Date']}}</td>
                                               <td class="text-center" width="10%">{{$data['Patient_Name']}}</td>
                                               <td class="text-center">{{$data['Contact_No']}}</td>
-                                              <td class="text-center">{{$data['Age']}}</td>
+                                              <td class="text-center" width="5%">{{$data['Age']}}</td>
                                               <td class="text-center">{{$data['Sex']}}</td>
                                               <td class="text-center">{{$data['Address']}}</td>
                                               <td class="text-center" width="20%">{{$data['Diagnosis_Result']}}</td>
@@ -71,7 +71,7 @@
                                             <th class="text-center">Sex</th>
                                             <th class="text-center">Address</th>
                                             <th class="text-center">Report</th>
-                                            <th class="text-center">Action</th>
+                                            <th class="text-center">View</th>
                                           </tr>
                                       </tfoot>
                                   </table>

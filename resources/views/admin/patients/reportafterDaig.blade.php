@@ -11,7 +11,7 @@
           <div class="text-right">
               <button id="printPrescription" class="btn btn-sm btn-danger"><i class="fa fa-print"></i> Print</button>
               <br><br>
-              <form action="/pdf_diag" method="get">
+              <form action="/pdf_diag" method="get" style="margin: -55px 71px;">
                 <input type="hidden" name="arr" value="{{$reportJson}}">
                 <button  class="btn btn-sm btn-danger">
                 <i class="fa fa-file-pdf-o"></i> Export as PDF
@@ -19,12 +19,14 @@
               </form>
           </div>
 
+          <br><br>
 
           <div id="printArea">
 
             <header>
                 <div class="row">
                     <div class="col">
+                            <br><br>
                             <h1 style="text-align: center;color: #bb414d;">COVID-19 Diagnosis Lab Report</h1>
 
                     </div>

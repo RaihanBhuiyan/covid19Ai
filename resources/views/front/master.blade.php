@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI-based COVID-19 Diagnosis System</title>
     <link rel="shortcut icon" href="{{asset('admin/img/favicon1.ico')}}">
-    <!-- <link rel="stylesheet" href="{{asset('front/css/components.css')}}"> -->
     <link rel="stylesheet" href="{{asset('admin/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/icons.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/responsee.css')}}">
@@ -13,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('front/css/owl.theme.css')}}">     
     <link rel="stylesheet" href="{{asset('front/css/template-style.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/progresscircle.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/toastr.min.css')}}">
 
     <link href='https://fonts.googleapis.com/css?family=Roboto:500,700' rel='stylesheet' type='text/css'>
 
@@ -128,6 +128,7 @@
                   <form action="{{url('post-login')}}" method="POST" id="logForm">
                     {{ csrf_field() }}
                     <div class="form-label-group">
+                      <span id="eamil_error" class="text-danger"></span>
                       <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" >
                       <label for="inputEmail">Email address</label>
 
@@ -137,15 +138,17 @@
                     </div>
 
                     <div class="form-label-group">
+                      <span id="password_error" class="text-danger"></span>
                       <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password">
                       <label for="inputPassword">Password</label>
+                      
 
                       @if ($errors->has('password'))
                       <span class="error">{{ $errors->first('password') }}</span>
                       @endif
                     </div>
 
-                    <button class="btn btn-lg btn-dark btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign In</button>
+                    <button class="btn btn-lg btn-dark btn-block btn-login text-uppercase font-weight-bold mb-2" id="loginBtn" type="submit">Sign In</button>
                     <div class="text-center">Can't log in?
                       <a class="small" href="{{url('registration')}}" style="text-decoration: underline;">Click here for sign up an account</a>
                     </div>
@@ -155,19 +158,14 @@
           </div>
         </div>
     </div>
+
+
+
     @yield('body')
 
     <footer>
         <!-- Main Footer -->
-        @if(session('error'))
-          <input type="hidden" id="error" value="{{session('error')}}">
-        @endif
-        @if(session('alert'))
-          <input type="hidden" id="error" value="{{session('alert')}}">
-        @endif
-        @if(session('success'))
-          <input type="hidden" id="error" value="{{session('success')}}">
-        @endif
+
         <!-- Bottom Footer -->
       <section class="padding background-dark full-width">
         <div class="s-12 l-12 text-center">
@@ -177,20 +175,65 @@
     </footer>
     <script src="{{asset('admin/js/jquery.min.js')}}"></script>
     <script src="{{asset('admin/js/bootstrap.min.js')}}"></script>
-    <!-- <script type="text/javascript" src="{{asset('front/js/jquery-ui.min.js')}}"></script> -->
     <script type="text/javascript" src="{{asset('front/js/responsee.js')}}"></script>
     <script type="text/javascript" src="{{asset('front/js/owl.carousel.js')}}"></script>
     <script type="text/javascript" src="{{asset('front/js/template-scripts.js')}}"></script>
-
-    <script type="text/javascript" src="{{asset('admin/js/notify.min.js')}}"></script>
-
+    <script type="text/javascript" src="{{asset('admin/js/toastr.min.js')}}"></script>
 
     <script type="text/javascript">
-      $(document).ready(function(){
-          var getError = $("#error").val();
-          $.notify(getError,"error");
+      $(function() {
+          $("#eamil_error").hide();
+          $("#password_error").hide();
 
-      });   
+          var errEmail = false;
+          var errPassword = false;
+
+
+        $("#inputEmail").focusout(function() {
+          check_email();
+        });
+        $("#inputPassword").focusout(function() {
+          check_password();
+        });
+
+      function check_email() {
+          var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
+          if(pattern.test($("#inputEmail").val())) {
+            $("#eamil_error").hide();
+          } else {
+            $("#eamil_error").html("Invalid email address");
+            $("#eamil_error").show();
+            errEmail = true;
+          }
+      }
+
+        function check_password() {
+          var password_length = $("#inputPassword").val().length;
+          if(password_length < 8) {
+              $("#password_error").html("At least 8 characters");
+              $("#password_error").show();
+              errPassword = true;
+          } else {
+            $("#password_error").hide();
+          }
+       }
+
+         $("#logForm").submit(function() {
+          errEmail = false;
+          errPassword = false;
+
+
+          check_email();
+          check_password();
+
+          if(errEmail == false && errPassword == false ) {
+              return true;
+          } else {
+              return false;
+          }
+        });
+
+       });
     </script>
 
     <script src="{{asset('front/js/progresscircle.js')}}"></script>
@@ -203,6 +246,44 @@
       var today = new Date();
       document.getElementById("dateTime").innerHTML = today.toLocaleDateString("en-US", options);
     </script>
+
+<script type="text/javascript">
+        toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-bottom-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "10000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+      }
+      @if(Session::has('success'))
+        toastr["success"]("{{ Session::get('success') }}")
+      @endif
+      @if(Session::has('error'))
+        toastr["error"]("{{ Session::get('error') }}")
+      @endif
+      @if(Session::has('warning'))
+        toastr["warning"]("{{ Session::get('warning') }}")
+      @endif
+
+
+      @if(Session::has('successReg1'))
+        toastr["success"]("{{ Session::get('successReg1') }}")
+      @endif
+      @if(Session::has('successReg2'))
+        toastr["info"]("{{ Session::get('successReg2') }}")
+      @endif
+
+</script>
 
 
 

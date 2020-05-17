@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AI Based COVID-19 Diagnosis System</title>
+    <title>AI-based COVID-19 Diagnosis System</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -21,7 +21,7 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{asset('admin/css/custom.css')}}">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="{{asset('admin/img/covid192020.ico')}}">
+    <link rel="shortcut icon" href="{{asset('admin/img/favicon1.ico')}}">
     <style>
       .error_form {
         font-size: 15px;
@@ -42,7 +42,7 @@
                   <div class="logo">
                     <h1>Registration</h1>
                   </div>
-                  <p><b>AI-based COVID-19 Diagnosis System</b>.</p>
+                  <p><b>Please fill up this registraion form with your valid information for use this AI-based COVID-19 Diagnosis System </b></p>
                 </div>
               </div>
             </div>
@@ -170,8 +170,8 @@
 
         function check_address() {
             var address_length = $("#address").val().length;
-            if(address_length < 5 || address_length > 20) {
-              $("#address_error_message").html("Address should be between 5-20 characters");
+            if(address_length < 5 || address_length > 250) {
+              $("#address_error_message").html("Address should be between 5-250 characters");
               $("#address_error_message").show();
               error_address = true;
             } else {

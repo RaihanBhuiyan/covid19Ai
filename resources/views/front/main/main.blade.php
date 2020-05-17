@@ -20,6 +20,25 @@
 			</div>
 	      <div class="row">
 
+	      		<div class="col-xl-4 col-sm-12">
+	            	<div class="statistic-block block" style="padding: 4px 0px;background: #f7f7f7;">
+	            		<h3 class="text-center">Today's Status</h3>
+	                  <div class="progress-details d-flex align-items-end justify-content-between" style="margin: 0 40px;">
+
+	                  	<div class="col-md-6 text-center">
+	                  		<p>New Cases</p>
+	                  		<h4><i class="icon-sli-people icon2x text-warning"></i></h4>
+	                  		<h3>{{$bdstatus[9]}}</h3>
+	                  	</div>
+	                  	<div class="col-md-6 text-center">
+	                  		<p>New Deaths</p>
+	                  		<h4><i class="icon-sli-user-unfollow icon2x text-danger"></i></h4>
+	                  		<h3>{{$bdstatus[11]}}</h3>
+	                  	</div>
+	                  </div>
+	                </div>
+	            </div>
+
 	        <div class="col-xl-4 col-sm-12">
 	                <div class="statistic-block block" style="padding: 17px 0px;background: #f7f7f7;">
 	                  <div class="progress-details d-flex align-items-end justify-content-between" style="margin: 0 40px;">
@@ -44,24 +63,7 @@
 	                  </div>
 	                </div>
 	            </div>
-	            <div class="col-xl-4 col-sm-12">
-	            	<div class="statistic-block block" style="padding: 4px 0px;background: #f7f7f7;">
-	            		<h3 class="text-center">Today's Status</h3>
-	                  <div class="progress-details d-flex align-items-end justify-content-between" style="margin: 0 40px;">
 
-	                  	<div class="col-md-6 text-center">
-	                  		<p>New Cases</p>
-	                  		<h4><i class="icon-sli-people icon2x text-warning"></i></h4>
-	                  		<h3>{{$bdstatus[9]}}</h3>
-	                  	</div>
-	                  	<div class="col-md-6 text-center">
-	                  		<p>New Deaths</p>
-	                  		<h4><i class="icon-sli-user-unfollow icon2x text-danger"></i></h4>
-	                  		<h3>{{$bdstatus[11]}}</h3>
-	                  	</div>
-	                  </div>
-	                </div>
-	            </div>
 	        </div>
 	    </div>
      </section>
@@ -240,7 +242,7 @@
             <div class="s-12 m-12 l-12 margin-m-bottom">
               <div class="">
                 
-        			  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        			  <div class="table-wrapper-scroll-y my-custom-scrollbar" style="height: 351px">
 					        <table class="table  table-striped mb-0" >
 					          <thead>
 					            <tr>

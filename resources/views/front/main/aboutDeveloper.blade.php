@@ -7,12 +7,7 @@
         <section class="section background-white">
           <div class="line">
             <h2 class="text-size-40 margin-bottom-30">About Developer</h2>
-            <p class="margin-bottom-40">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-              Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
-              Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros 
-              et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-            </p>
+
           </div>
 
           <div class="line ">
@@ -25,14 +20,12 @@
                 </div>
               </div>
               <div class="s-12 m-12 l-8 margin-m-bottom">
-                    <h2 class="text-thin"><b>Unlimited Color Variants</b></h2>
-                    <p class="margin-bottom-40">
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-                      Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
+                    <h2 class="text-thin"><b>John Sujoy Sarkar</b></h2>
+                    <p class="margin-bottom-40" style="text-align: justify;">
+                      He is the initiator of AI-based COVID-19 Diagnosis System. He designed and developed this artificially intelligent diagnosis facility for screening COVID-19 using chest X-ray and CT Scan radiography. He is a self-motivated researcher of Computer Vision, Artificial Intelligent(AI) and Machine Learning(ML). He developed many fascinating AI-based solutions and AI-based COVID-19 Diagnosis System is one of those. He is also a Cloud Solution Architect, Certified Red Hat Engineer and conduct many Red Hat professional certification courses. Now he is working in a multinational software development farm as a Development and Operation(DevOps) Engineer. He is good at continues software development and integration methodology. 
                       
                     </p>
                     <p>Email : contact@sampledomain.com</p>
-                    <p class="margin-bottom-30">Contact : 54554355433</p>
               </div>
 
             </div>
@@ -50,15 +43,11 @@
                 </div>
               </div>
               <div class="s-12 m-12 l-8 margin-m-bottom">
-                    <h2 class="text-thin"><b>Unlimited Color Variants</b></h2>
-                    <p class="margin-bottom-40">
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-                      Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
-                      Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros 
-                      et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+                    <h2 class="text-thin"><b>Abdullah AL Raihan</b></h2>
+                    <p class="margin-bottom-40" style="text-align: justify;">
+                      He is one of a Front-End developer of AI-based COVID-19 Diagnosis System. By profession he is a Full Stack developer and working with different programing languages and responsive frameworks. Now he is working in a renowned software development farm as a Asst. Software Engineer. He is good at Agile methodology.
                     </p>
-                    <p>Email : contact@sampledomain.com</p>
-                    <p class="margin-bottom-30">Contact : 54554355433</p>
+                    <p>Email : raihanaal2@gmail.com</p>
               </div>
 
             </div>
@@ -76,15 +65,11 @@
                 </div>
               </div>
               <div class="s-12 m-12 l-8 margin-m-bottom">
-                    <h2 class="text-thin"><b>Unlimited Color Variants</b></h2>
-                    <p class="margin-bottom-40">
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-                      Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
-                      Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros 
-                      et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+                    <h2 class="text-thin"><b>Amzad Hossain</b></h2>
+                    <p class="margin-bottom-40" style="text-align: justify;">
+                    He is also a Front-End developer of AI-based COVID-19 Diagnosis System.  He is a web developer and working with php and responsive frameworks. He is good at UI development.
                     </p>
-                    <p>Email : contact@sampledomain.com</p>
-                    <p class="margin-bottom-30">Contact : 54554355433</p>
+                    <p>Email : amzad1044@gmail.com</p>
               </div>
 
             </div>

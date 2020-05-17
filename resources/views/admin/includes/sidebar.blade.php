@@ -11,7 +11,7 @@
             </div>
 
         </div>
-        <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
+
         <ul class="list-unstyled">
                 <li class="{{ (request()->is('diagnosis')) ? 'active' : '' }}"><a href="{{route('diagnosis')}}"> <span><i class="fas fa-lungs"></i></span>Diagnosis </a></li>
                 <li class="{{ (request()->is('patients')) ? 'active' : '' }}"><a href="{{route('patients')}}"> <span><i class="fas fa-hospital-user"></i></span>Patients </a></li>

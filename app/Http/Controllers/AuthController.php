@@ -38,11 +38,8 @@ class AuthController extends Controller
           ]);
 
 
-
           $data = $response->json();
-          // echo '<pre>';
-          // print_r($data['response']['Organization']);
-          // exit();
+
           if(array_key_exists("data",$data['response']))
           {
                 $token_decode = json_decode(base64_decode(str_replace('_', '/', str_replace('-','+',explode('.', $data['response']['data'])[1]))));
@@ -54,41 +51,20 @@ class AuthController extends Controller
           {
               return redirect()->intended('diagnosis');
           }
-          if($data['response']['status']=='User account not active')
+          if($response->status()==400)
           {
-                Session::flash('alert','Your account is not active!!Please wait for active');
-                return Redirect::to("/")->withSuccess('Your account is not active!!Please wait for active');
+                Session::flash('warning','Your account is not active!');
+                return Redirect("/");
           }
+          Session::flash('error','You have entered invalid credentials');
+          return Redirect("/");
 
-
-          Session::flash('error','Oppes! You have entered invalid credentials');
-          return Redirect::to("/")->withSuccess('Oppes! You have entered invalid credentials');
       }
 
-      // public function diagnosis(Request $request)
-      // {
-      //   if($request->session()->has('uuid'))
-      //   {
-      //       return redirect()->intended('diagnosis');
-            
-      //   }
-      //   Session::flash('Error','Invelid');
-      //   return Redirect('/');
-      // }
-
-      public function create(array $data)
-      {
-        return User::create([
-          'name' => $data['name'],
-          'email' => $data['email'],
-          'password' => Hash::make($data['password'])
-        ]);
-      }
 
       public function logout()
       {
           Session::flush();
-          Auth::logout();
           return Redirect('/');
       }
 }

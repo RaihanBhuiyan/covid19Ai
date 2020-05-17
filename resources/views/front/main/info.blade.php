@@ -10,42 +10,28 @@
             <p class="margin-bottom-0 text-size-16">For further information you can email or call us.</p>
           </div>  
         </header>
-        <div class="section background-white"> 
-          <div class="line">
-            <div class="margin">
+      </article>
 
-              <div class="s-12 m-12 l-4 margin-m-bottom">
+      <section class="section background-white">
+           <div class="line" >
+
+              <div class="s-12 m-12 l-4 ">
                 <div class="padding-2x block-bordered border-radius">
                   <div class="float-left hide-s">
                     <i class="icon-sli-envelope icon3x text-primary"></i>
                   </div>
                   <div class="margin-left-70 margin-s-left-0 margin-bottom">
                     <h3 class="margin-bottom-0">E-mail</h3>
-                    <p>contact@sampledomain.com<br>
+                    <p>info.covid19@madebybangladesh.com<br>
                        office@sampledomain.com
                     </p>              
                   </div>
                 </div>
               </div>
 
-              <div class="s-12 m-12 l-4 margin-m-bottom">
-                <div class="padding-2x block-bordered border-radius">
-                  <div class="float-left hide-s">
-                    <i class="icon-sli-phone icon3x text-primary"></i>
-                  </div>
-                  <div class="margin-left-70 margin-s-left-0">
-                    <h3 class="margin-bottom-0">Phone Numbers</h3>
-                    <p><span class="text-primary">Infoline: 0800 4521 800 50</span>
-                       Office: 0450 5896 625 16
-                    </p>             
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-        </div> 
-      </article>
+          </div>
+      </section>
 
       <!-- Section 5 -->
       <section class="section background-white text-center">

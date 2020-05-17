@@ -12,6 +12,7 @@
             <header>
                 <div class="row">
                     <div class="col">
+                            <br><br>
                             <h1 style="text-align: center;color: #bb414d;">COVID-19 Diagnosis Lab Report</h1>
                     </div>
                 </div>

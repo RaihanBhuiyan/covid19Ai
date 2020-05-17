@@ -32,13 +32,11 @@ class PatientController extends Controller
            'UUID' => $uuid,
          ]);
 
-       $data = $response->json();
-       // echo '<pre>';
-       // print_r($data);
-       // exit();
+        $data = $response->json();
 
-       if (array_key_exists("data",$data['response'])){
-         return view('admin.patients.patients',['myData'=>$data['response']['data']]);
+        if (array_key_exists("data",$data['response']))
+        {
+          return view('admin.patients.patients',['myData'=>$data['response']['data']]);
         }
 
     }
@@ -49,17 +47,11 @@ class PatientController extends Controller
 
     public function Diagnosis()
     {
-        $uuid=Session::get('uuid');
-        $uuid = $uuid[0];
-        if($uuid)
-        {
-            return view('admin.patients.diagnosis'); 
-        }
-        Session::flash('Error','Invelid');
-        return Redirect("/");
+       return view('admin.patients.diagnosis'); 
     }
 
-    protected function validatePatient($request){
+    protected function validatePatient($request)
+    {
 		    	$this->validate($request,
 		    		[
 			    		'name' => 'required',
@@ -74,7 +66,7 @@ class PatientController extends Controller
 			        	'image.image' => 'Please make sure your image is jpeg,png,jpg'
 			    	]
 		    	);
-        }
+      }
     public function savePatient(Request $request)
     {
         $this->validatePatient($request);
@@ -145,10 +137,7 @@ class PatientController extends Controller
               }
         }
     }
-    public function ReportPatient()
-    {
-        //return view('admin.patients.report');
-    }
+
     public function PatientReport($key)
     {
         $uuid=Session::get('uuid');
@@ -164,10 +153,6 @@ class PatientController extends Controller
          ]);
 
        $data = $response->json();
-
-       // echo '<pre>';
-       // print_r($data['response']['data'][$key]);
-       // exit();
 
        if (array_key_exists("data",$data['response'])){
          return view('admin.patients.reportprescript',['keyData'=>$data['response']['data'][$key],'key'=>$key,'Organization'=>$Org]);
@@ -213,10 +198,4 @@ class PatientController extends Controller
       return $pdfDownload;
     }
 
-    // public function Pdf_Report_Daig($key)
-    // {
-    //     $reportJson = json_decode($key);
-    //     print_r($reportJson);
-    //     exit();
-    // }
 }

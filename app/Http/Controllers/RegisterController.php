@@ -22,13 +22,8 @@ class RegisterController extends Controller
   }
   public function postRegistration(Request $request)
   {
-      request()->validate([
-        'ORGName' => 'required',
-        'ContactNo' => 'required|max:11|min:11',
-        'address' => 'required',
-        'email' => 'required|email|unique:users',
-        'password' => 'required|min:6',
-      ]);
+      //return view('admin.login.otp',['uuid'=>'Otp Success']);
+
       $response=Http::withHeaders([
             'x-api-key' => 'covid192020',
         ])
@@ -41,12 +36,7 @@ class RegisterController extends Controller
         ]);
 
 
-
         $data = $response->json();
-        
-        // echo '<pre>';
-        // print_r($data['response']);
-        // exit();
 
         if (array_key_exists("data",$data['response']))
         {
@@ -68,9 +58,9 @@ class RegisterController extends Controller
   }
   public function Otp(Request $request)
   {
-      request()->validate([
-        'otp' => 'required'
-      ]);
+
+
+
       $response=Http::withHeaders([
             'x-api-key' => 'covid192020',
         ])
@@ -79,34 +69,25 @@ class RegisterController extends Controller
             'OTP' => $request->otp
         ]);
 
-          // $ResStatus = $response->status();
-          // echo '<pre>';
-          // print_r($ResStatus);
-          // exit();
 
         $data = $response->json();
-         // echo '<pre>';
-         // print_r($data);
-         // exit();
-         if($response->successful())
-         {
-              Session::flash('success','Please wait till your host active your account.');
-              return Redirect::to('/');
+
+        if($response->successful())
+         {  
+              Session::flash('successReg1','Registration Successful');
+              Session::flash('successReg2','Please wait until your account is active');
+              $msg = 'success';
          }
          else if($response->status()==403)
          {
               Session::flash('error','Your otp expired');
-              return Redirect::to('/');
+              $msg = 'Expered';
          }
          else if($response->status()==400)
          {
-              Session::flash('error','You have enter an Invalid otp');
+              $msg = 'invalid';
 
          }
-         // else
-         // {
-         //   //return \Redirect::route('Otp', ['uuid'=>$request->uuid]);
-         //    return redirect()->intended('Otp', ['uuid'=>$request->uuid]);
-         // }
+        return $msg;
   }
 }
