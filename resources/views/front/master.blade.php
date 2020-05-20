@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{asset('front/css/owl.theme.css')}}">     
     <link rel="stylesheet" href="{{asset('front/css/template-style.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/progresscircle.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/css/toastr.min.css')}}">
+    <link rel="stylesheet" href="{{asset('front/css/toastr.min.css')}}">
 
     <link href='https://fonts.googleapis.com/css?family=Roboto:500,700' rel='stylesheet' type='text/css'>
 
@@ -96,7 +96,7 @@
     <header role="banner" class="position-absolute">
       <!-- Top Navigation -->
       <nav class=" background-transparent-hightlight full-width sticky">
-        <div class="s-6 l-6">
+        <div class="s-6 l-2">
           <a href="{{url('/')}}" class="logo">
             <!-- Logo White Version -->
             <img class="logo-white" src="{{asset('front/img/logo5.png')}}" alt="">
@@ -104,7 +104,7 @@
             <img class="logo-dark" src="{{asset('front/img/logo5.png')}}" alt="">
           </a>
         </div>
-        <div class="top-nav s-6 l-6" style="height: 69px;">
+        <div class="top-nav s-6 l-10" style="height: 69px;">
 
           <ul class="right chevron">
             <li><a href="{{url('/')}}">Home</a></li>
@@ -149,9 +149,6 @@
                     </div>
 
                     <button class="btn btn-lg btn-dark btn-block btn-login text-uppercase font-weight-bold mb-2" id="loginBtn" type="submit">Sign In</button>
-                    <div class="text-center">Can't log in?
-                      <a class="small" href="{{url('registration')}}" style="text-decoration: underline;">Click here for sign up an account</a>
-                    </div>
                   </form>
 
             </div>
@@ -169,7 +166,7 @@
         <!-- Bottom Footer -->
       <section class="padding background-dark full-width">
         <div class="s-12 l-12 text-center">
-          <p class="text-size-12">Copyright 2020, AI-based COVID-19 Diagnosis System.</p>
+          <p class="text-size-12">Copyright 2020, AI-based COVID-19 Diagnosis System</p>
         </div>
       </section>
     </footer>
@@ -178,7 +175,7 @@
     <script type="text/javascript" src="{{asset('front/js/responsee.js')}}"></script>
     <script type="text/javascript" src="{{asset('front/js/owl.carousel.js')}}"></script>
     <script type="text/javascript" src="{{asset('front/js/template-scripts.js')}}"></script>
-    <script type="text/javascript" src="{{asset('admin/js/toastr.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('front/js/toastr.min.js')}}"></script>
 
     <script type="text/javascript">
       $(function() {
@@ -285,7 +282,14 @@
 
 </script>
 
+    <script src="{{asset('admin/js/dataTables.min.js')}}"></script>
+    <script src="{{asset('admin/js/dataTable.bootstrap.min.js')}}"></script>
+    <script>
+      $(document).ready(function() {
+          $('#countryTable').DataTable();
+        } );
 
+    </script>
 
   </body>
 </html>

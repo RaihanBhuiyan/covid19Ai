@@ -20,9 +20,6 @@ class HomeController extends Controller
 
       $bd_total_Status= collect($all_contry_status)->where('country','Bangladesh')->flatten()->all();
 
-      // echo '<pre>';
-      // print_r($bd_total_Status);
-      // exit();
 
         $BdDailyStatistics = Http::get('https://api.thevirustracker.com/free-api?countryTimeline=BD');
         $DailyBdStatistics = $BdDailyStatistics->json();

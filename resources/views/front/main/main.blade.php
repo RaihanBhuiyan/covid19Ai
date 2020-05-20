@@ -242,8 +242,8 @@
             <div class="s-12 m-12 l-12 margin-m-bottom">
               <div class="">
                 
-        			  <div class="table-wrapper-scroll-y my-custom-scrollbar" style="height: 351px">
-					        <table class="table  table-striped mb-0" >
+        			  <div >
+					        <table id="countryTable" class="table table-striped">
 					          <thead>
 					            <tr>
 					              <!-- <th scope="col">#</th> -->
@@ -299,6 +299,7 @@
 
       
     </main>
+
     <script src="{{asset('front/js/chart.js')}}"></script>
         <script type="text/javascript">
         //Bd daily new cases

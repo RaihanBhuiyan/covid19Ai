@@ -11,17 +11,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="{{asset('admin/css/bootstrap.min.css')}}">
-
     <link rel="stylesheet" href="{{asset('admin/css/font.css')}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700">
     <link rel="stylesheet" href="{{asset('admin/css/style.default.css')}}" id="theme-stylesheet">
     <link rel="stylesheet" href="{{asset('admin/css/custom.css')}}">
-    
     <link rel="shortcut icon" href="{{asset('admin/img/favicon1.ico')}}">
-
     <link href="{{asset('admin/prescription/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('admin/css/jquery-confirm.min.css')}}">
-
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
@@ -37,17 +33,17 @@
       .error_form{color:#b34403}
 
       .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 180px; /* Location of the box */
+        display: none; 
+        position: fixed; 
+        z-index: 1; 
+        padding-top: 180px; 
         left: 0;
         top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgb(0,0,0); 
+        background-color: rgba(0,0,0,0.4); 
       }
 
       /* Modal Content */

@@ -1,5 +1,4 @@
 @extends('admin.master')
-<!-- <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" /> -->
 @section('body')
     <!-- loader -->
     <div id="loader" class="modal">

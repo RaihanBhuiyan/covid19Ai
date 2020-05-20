@@ -53,8 +53,6 @@ class RegisterController extends Controller
             Session::flash('error','User already registered');
             return Redirect::to("registration");
          }
-         // Session::flash('Error','Invalid Information');
-         // return Redirect::to("registration");
   }
   public function Otp(Request $request)
   {

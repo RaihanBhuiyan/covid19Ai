@@ -7,17 +7,11 @@
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="robots" content="all,follow">
-      <!-- Bootstrap CSS-->
       <link rel="stylesheet" href="{{asset('admin/css/bootstrap.min.css')}}">
-      <!-- Font Awesome CSS-->
       <link rel="stylesheet" href="{{asset('admin/css/font-awesome.min.css')}}">
-      <!-- Custom Font Icons CSS-->
       <link rel="stylesheet" href="{{asset('admin/css/font.css')}}">
-      <!-- Google fonts - Muli-->
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700">
-      <!-- theme stylesheet-->
       <link rel="stylesheet" href="{{asset('admin/css/style.default.css')}}" id="theme-stylesheet">
-      <!-- Custom stylesheet - for your changes-->
       <link rel="stylesheet" href="{{asset('admin/css/custom.css')}}">
       <!-- Favicon-->
       <link rel="shortcut icon" href="{{asset('admin/img/covid192020.ico')}}">
@@ -58,7 +52,6 @@
                     @endif
                     
                   </div>
-                  <!-- <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Send</button> -->
                   <input type="submit" name="btn" id="btnOtp" class="btn btn-primary" value="Send"  />
                 <!-- </form> -->
 
@@ -136,10 +129,5 @@
         });
     })
   </script>
-
-
-
-
-
-  </body>
-  </html>
+</body>
+</html>
