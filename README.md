@@ -1,79 +1,95 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# covid19Ai
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Overview
 
-## About Laravel
+covid19Ai is an API-based system designed to analyze chest X-ray images using AI tools to determine whether a patient is affected by COVID-19. The AI model is developed in Python and hosted in a separate repository, while the main application handles image capturing and API communication.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Technologies Used
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Python** - Custom AI model development
+- **PHP** (47.9%) - Backend logic and API integration
+- **HTML** (52.1%) - Frontend UI for user interactions
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Business Logic
 
-## Learning Laravel
+1. **Image Capture & Upload**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+   - The user uploads a chest X-ray film image via the UI.
+   - The system validates the image format before processing.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. **AI-Based Analysis**
 
-## Laravel Sponsors
+   - The image is sent to a dedicated AI model through an API.
+   - The AI tool analyzes the X-ray and determines whether the patient has COVID-19.
+   - The API returns a response indicating the likelihood of infection.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+3. **Decision & Reporting**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
+   - The system displays the AI-generated result to the user.
+   - A report can be generated for medical professionals.
+   - Data can be stored for further analysis or research purposes.
 
-## Contributing
+## Installation
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/RaihanBhuiyan/covid19Ai.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd covid19Ai
+   ```
+3. Install dependencies:
+   ```sh
+   composer install
+   ```
+4. Set up environment variables:
+   ```sh
+   cp .env.example .env
+   php artisan key:generate
+   ```
+5. Run the backend server:
+   ```sh
+   php artisan serve
+   ```
 
-## Code of Conduct
+## AI Model Setup (Hosted in a Separate Repository)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. Clone the AI model repository:
+   ```sh
+   git clone https://github.com/RaihanBhuiyan/covid19Ai-ML.git
+   ```
+2. Install Python dependencies:
+   ```sh
+   pip install -r requirements.txt
+   ```
+3. Run the AI model API server:
+   ```sh
+   python app.py
+   ```
 
-## Security Vulnerabilities
+## Usage
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Users upload chest X-ray images via the UI.
+- The system processes and sends the image to the AI API.
+- AI analyzes and returns COVID-19 detection results.
+- Medical professionals can review and download reports.
+
+## API Endpoints
+
+- **POST /analyze** - Upload an image for COVID-19 detection.
+- **GET /results/{id}** - Retrieve analysis results for a specific case.
+
+## Contribution
+
+Contributions are welcome! Please follow the standard GitHub flow:
+
+1. Fork the repository.
+2. Create a new branch.
+3. Commit changes and push.
+4. Submit a pull request.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License.
+
